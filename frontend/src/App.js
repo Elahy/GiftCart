@@ -30,7 +30,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              A Gift Cart
+              Gift Cart
             </Link>
           </div>
           <div>

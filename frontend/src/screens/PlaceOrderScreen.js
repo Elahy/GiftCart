@@ -16,6 +16,7 @@ export default function PlaceOrderScreen(props) {
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
+  console.log(order, "order");
 
   const toPrice = (num) => Number(num.toFixed(2)); // 5.123 => "5.12" => 5.12
   cart.itemsPrice = toPrice(
@@ -26,16 +27,23 @@ export default function PlaceOrderScreen(props) {
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
   const dispatch = useDispatch();
+
   const placeOrderHandler = () => {
     dispatch(createdOrder({ ...cart, orderItems: cart.cartItems }));
+    console.log(
+      { ...cart, orderItems: cart.cartItems },
+      "{ ...cart, orderItems: cart.cartItems }"
+    );
   };
 
   useEffect(() => {
+    console.log(success, "success");
+    console.log(order, "order");
     if (success) {
       props.history.push(`/order/${order._id}`);
       dispatch({ type: ORDER_CREATE_RESET });
     }
-  }, [dispatch, order, props.history, success]);
+  }, [order, dispatch, success, props.history]);
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
