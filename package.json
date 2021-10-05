@@ -8,8 +8,7 @@
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
-    "frontend": "cd frontend && npm start"
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "repository": {
     "type": "git",
