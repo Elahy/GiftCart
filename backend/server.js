@@ -12,16 +12,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  //   .connect(process.env.MONGODB_URL || "mongodb://localhost/giftCart", {
-  .connect(
-    "mongodb+srv://giftcartuser:giftcartmongo@cluster0.0coco.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {
-      dbName: "Gift_CartDB",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(process.env.MONGODB_URL || "mongodb://localhost/giftCart", {
+    dbName: "Gift_CartDB",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("MongoDB is connected......");
   });
@@ -39,6 +35,10 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

@@ -1,18 +1,19 @@
 {
-  "name": "amazona",
+  "name": "giftcart",
   "type": "module",
   "version": "1.0.0",
   "description": "Ecommerce website like amazon",
   "main": "index.js",
   "scripts": {
     "build": "cd frontend && npm install && npm run build",
-    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
+    "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/basir/amazona.git"
   },
-  "author": "",
+  "author": "Elahy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/basir/amazona/issues"
@@ -34,5 +35,4 @@
     "eslint-plugin-react": "^7.21.2",
     "nodemon": "^2.0.4"
   }
- 
 }
